@@ -38,7 +38,7 @@ class HomeView: BaseVC {
     // MARK: - Populate Data
     private func fetchPost() {
         isLoading = true
-        view.showGradientSkeleton()
+        view.showAnimatedGradientSkeleton()
         homeViewModel.populatePost()
         homeViewModel.showError = { [weak self] errorMsg in
             self?.view.showToast(errorMsg)
@@ -61,6 +61,7 @@ class HomeView: BaseVC {
         }
     }
     
+    /// Handling action pull to refresh
     override func refreshAction() {
         super.refreshAction()
         fetchPost()
@@ -99,6 +100,7 @@ extension HomeView: SkeletonTableViewDataSource {
         return cell
     }
     
+    /// Handling skeleton view table cell
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -118,11 +120,25 @@ extension HomeView: SkeletonTableViewDataSource {
 // MARK: - Table Delegate
 extension HomeView: UITableViewDelegate {
     
+    /// Handling triggred load more table view
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard tableView == tablePost else  { return }
         guard homeViewModel.numberOfPost > 0 else { return }
         tableView.addLoading(indexPath) { [weak self] in
             self?.loadMorePost()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postTemp = homeViewModel.viewModelPost(index: indexPath.row)
+        let userTemp = homeViewModel.viewModelUser(userId: postTemp?.userId ?? 0)
+        toDetailPost(postTemp, username: userTemp?.usernanme ?? "")
+    }
+    
+    private func toDetailPost(_ post: PostViewModel?, username: String) {
+        let detailPostView = DetailPostView()
+        detailPostView.postId = post?.id ?? 0
+        detailPostView.userName = username
+        self.navigationController?.pushViewController(detailPostView, animated: true)
     }
 }

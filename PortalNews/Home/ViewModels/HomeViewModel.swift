@@ -44,7 +44,16 @@ class HomeViewModel {
     }
     
     func populatePost() {
+        currentIndexPagination = 9 // always value current index is 9 when first time or refresh
+        resetData() /// Make sure back to empty when first time load or maybe refresh
         fetchUser()
+    }
+    
+    private func resetData() {
+        allPostNews.removeAll()
+        allUsers.removeAll()
+        postNews.removeAll()
+        postComment.removeAll()
     }
     
     func loadMorePost() {
@@ -69,7 +78,6 @@ class HomeViewModel {
                 if let resData = data, let listUser = try? JSONDecoder().decode([User].self, from: resData) {
                     self?.allUsers = listUser
                     self?.fetchPost()
-                    self?.populateComment()
                 }
             }
         }
