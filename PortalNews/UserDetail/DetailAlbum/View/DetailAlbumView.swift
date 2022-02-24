@@ -80,6 +80,7 @@ extension DetailAlbumView: SkeletonCollectionViewDataSource {
         let photo = detailAlbumViewModel.viewModelPhoto(index: indexPath.row)
         cell.setValue(photoUrl: photo?.thumbnail ?? "")
         
+        /// Detail photo / preview photo
         if let photoDetailUrl = URL(string: photo?.photoDetail ?? "") {
             cell.imgPhotos.setupImageViewer(url: photoDetailUrl,
                                             options: [.titleView(photo?.title ?? ""),
