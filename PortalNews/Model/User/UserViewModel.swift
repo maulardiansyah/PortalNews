@@ -33,7 +33,7 @@ class UserViewModel {
         return user?.phone ?? ""
     }
     
-    var addres: String {
+    var address: String {
         let streetTemp = user?.address?.street ?? ""
         let cityTemp = user?.address?.city ?? ""
         return streetTemp + ", " + cityTemp

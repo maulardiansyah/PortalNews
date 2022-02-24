@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectionAlbumCell" customModule="PortalNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coi-cf-DLw">
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Album" translatesAutoresizingMaskIntoConstraints="NO" id="Vnp-yP-9aS">
+                                <rect key="frame" x="8" y="8" width="125" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="yjK-Oq-3WA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zt7-sy-fXh">
+                                <rect key="frame" x="8" y="100" width="125" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useFontLineHeight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zt7-sy-fXh" secondAttribute="trailing" constant="8" id="JFc-B0-tK4"/>
+                            <constraint firstAttribute="bottom" secondItem="zt7-sy-fXh" secondAttribute="bottom" constant="12" id="Sty-xE-ofk"/>
+                            <constraint firstItem="zt7-sy-fXh" firstAttribute="top" secondItem="Vnp-yP-9aS" secondAttribute="bottom" constant="12" id="U8A-Rk-l5Z"/>
+                            <constraint firstItem="Vnp-yP-9aS" firstAttribute="top" secondItem="coi-cf-DLw" secondAttribute="top" constant="8" id="XHc-tn-Hcd"/>
+                            <constraint firstItem="Vnp-yP-9aS" firstAttribute="leading" secondItem="coi-cf-DLw" secondAttribute="leading" constant="8" id="Z32-x7-4xj"/>
+                            <constraint firstAttribute="trailing" secondItem="Vnp-yP-9aS" secondAttribute="trailing" constant="8" id="dV7-wQ-p1q"/>
+                            <constraint firstItem="zt7-sy-fXh" firstAttribute="leading" secondItem="coi-cf-DLw" secondAttribute="leading" constant="8" id="oeW-Z3-hwD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="coi-cf-DLw" secondAttribute="bottom" id="0fU-8O-RFx"/>
+                <constraint firstItem="coi-cf-DLw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4Fj-uk-M6R"/>
+                <constraint firstItem="coi-cf-DLw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="72L-jF-oEd"/>
+                <constraint firstAttribute="trailing" secondItem="coi-cf-DLw" secondAttribute="trailing" id="Kq1-tF-3rT"/>
+            </constraints>
+            <size key="customSize" width="141" height="148"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="container" destination="coi-cf-DLw" id="VsF-uf-Zwc"/>
+                <outlet property="iconAlbums" destination="Vnp-yP-9aS" id="YAf-GI-sE8"/>
+                <outlet property="lblAlbumName" destination="zt7-sy-fXh" id="6T1-R3-x1f"/>
+            </connections>
+            <point key="canvasLocation" x="-94.927536231884062" y="200.89285714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Album" width="96" height="84"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -13,6 +13,8 @@ class DetailPostCell: UITableViewCell {
     @IBOutlet weak var lblTitlePost: UILabel!
     @IBOutlet weak var lblDescPost: UILabel!
     
+    var nameTapped: SelectionClosure?
+    
     static let identifier = "detailPostNewsTableCell"
     static func detailPostNewsTableNib() -> UINib {
         return UINib(nibName: "DetailPostCell", bundle: nil)
@@ -34,5 +36,12 @@ class DetailPostCell: UITableViewCell {
          contentView.backgroundColor = .white
          
          lblUserNamePost.textColor = .darkBlue
+         lblUserNamePost.isUserInteractionEnabled = true
+         lblUserNamePost.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nameTappedAction)))
      }
+    
+    @objc
+    func nameTappedAction() {
+        nameTapped?()
+    }
 }

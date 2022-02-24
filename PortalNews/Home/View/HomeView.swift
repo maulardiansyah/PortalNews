@@ -41,6 +41,7 @@ class HomeView: BaseVC {
         view.showAnimatedGradientSkeleton()
         homeViewModel.populatePost()
         homeViewModel.showError = { [weak self] errorMsg in
+            self?.isLoading = false
             self?.view.showToast(errorMsg)
         }
         homeViewModel.fetchedPost = { [weak self] in
@@ -132,13 +133,13 @@ extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postTemp = homeViewModel.viewModelPost(index: indexPath.row)
         let userTemp = homeViewModel.viewModelUser(userId: postTemp?.userId ?? 0)
-        toDetailPost(postTemp, username: userTemp?.usernanme ?? "")
+        toDetailPost(postTemp, name: userTemp?.name ?? "")
     }
     
-    private func toDetailPost(_ post: PostViewModel?, username: String) {
+    private func toDetailPost(_ post: PostViewModel?, name: String) {
         let detailPostView = DetailPostView()
         detailPostView.postId = post?.id ?? 0
-        detailPostView.userName = username
+        detailPostView.userName = name
         self.navigationController?.pushViewController(detailPostView, animated: true)
     }
 }

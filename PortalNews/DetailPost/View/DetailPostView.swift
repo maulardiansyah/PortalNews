@@ -36,7 +36,7 @@ class DetailPostView: BaseVC {
 
     // MARK: - Populate Data
     private func populateData() {
-        view.showGradientSkeleton()
+        view.showAnimatedGradientSkeleton()
         detailPostViewModel.populatePostDetail(postId: postId)
         detailPostViewModel.showError = { [weak self] errorMsg in
             self?.view.showToast(errorMsg)
@@ -45,6 +45,13 @@ class DetailPostView: BaseVC {
             self?.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
             self?.tableDetailPost.reloadData()
         }
+    }
+    
+    // MARK: - Route
+    private func toUserDetail(userId: Int) {
+        let userDetailView = UserDetailView()
+        userDetailView.userId = userId
+        self.navigationController?.pushViewController(userDetailView, animated: true)
     }
 }
 
@@ -70,6 +77,12 @@ extension DetailPostView: SkeletonTableViewDataSource {
             cell.setPost(title: postDetail?.title ?? "",
                          desc: postDetail?.body ?? "",
                          userName: userName)
+            
+            /// Username tapped action
+            cell.nameTapped = {
+                self.toUserDetail(userId: postDetail?.userId ?? 0)
+            }
+            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableCell.identifier, for: indexPath) as? CommentTableCell else {
