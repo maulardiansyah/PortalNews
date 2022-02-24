@@ -7,10 +7,11 @@
 
 import UIKit
 
-class MainController: UIViewController {
+class MainController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        viewControllers = [HomeView()]
     }
 }

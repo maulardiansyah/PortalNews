@@ -13,6 +13,7 @@ enum Services {
     case getAllCommentPost(_ postId: Int)
     
     /// User
+    case getAllUser
     case detailUser(_ userId: Int)
     
     /// Album/Image

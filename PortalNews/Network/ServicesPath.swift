@@ -19,6 +19,7 @@ extension Services {
             return "/posts/\(postId)/comments"
             
         /// User
+        case .getAllUser: return "/users"
         case .detailUser(let userId):
             return "/users/\(userId)"
             
