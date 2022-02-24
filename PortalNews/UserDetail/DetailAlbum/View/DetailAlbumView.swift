@@ -79,6 +79,15 @@ extension DetailAlbumView: SkeletonCollectionViewDataSource {
         
         let photo = detailAlbumViewModel.viewModelPhoto(index: indexPath.row)
         cell.setValue(photoUrl: photo?.thumbnail ?? "")
+        
+        if let photoDetailUrl = URL(string: photo?.photoDetail ?? "") {
+            cell.imgPhotos.setupImageViewer(url: photoDetailUrl,
+                                            options: [.titleView(photo?.title ?? ""),
+                                                      .theme(.dark),
+                                                      .closeIcon(.icClose ?? UIImage())]
+            )
+        }
+        
         return cell
     }
     
@@ -112,4 +121,3 @@ extension DetailAlbumView: UICollectionViewDelegate, UICollectionViewDelegateFlo
         return CGSize(width: (screenWidth/3)-16, height: 80)
     }
 }
-
