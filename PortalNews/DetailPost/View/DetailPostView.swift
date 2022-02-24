@@ -99,9 +99,13 @@ extension DetailPostView: SkeletonTableViewDataSource {
     }
     
     /// Handling skeleton view table cell
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 2
+    }
+    
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section == 1 else { return 1 }
-        return 3
+        return 5
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
